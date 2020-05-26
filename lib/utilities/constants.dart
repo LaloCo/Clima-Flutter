@@ -7,7 +7,7 @@ const kTempTextStyle = TextStyle(
 
 const kMessageTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
-  fontSize: 60.0,
+  fontSize: 55.0,
 );
 
 const kButtonTextStyle = TextStyle(
@@ -19,4 +19,5 @@ const kConditionTextStyle = TextStyle(
   fontSize: 100.0,
 );
 
-const openWeatherApiKey = 'cebc832c85bac282dc33969a103af744';
+const kOWApiKey = 'cebc832c85bac282dc33969a103af744';
+const kOWWeatherEndpoint = 'http://api.openweathermap.org/data/2.5/weather';
