@@ -45,4 +45,11 @@ class WeatherModel {
     NetworkHelper networkHelper = NetworkHelper(url: url);
     return await networkHelper.getData();
   }
+
+  Future<dynamic> getCityWeather(String city) async {
+    String url = '$kOWWeatherEndpoint?q=$city&appid=$kOWApiKey&units=metric';
+
+    NetworkHelper networkHelper = NetworkHelper(url: url);
+    return await networkHelper.getData();
+  }
 }

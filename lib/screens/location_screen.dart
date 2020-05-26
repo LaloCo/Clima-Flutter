@@ -23,8 +23,13 @@ class _LocationScreenState extends State<LocationScreen> {
     updateUI(widget.weatherData);
   }
 
-  void getWeatherData() async {
+  void getLocationWeatherData() async {
     var weather = await WeatherModel().getLocationWeather();
+    updateUI(weather);
+  }
+
+  void getCityWeatherData({String cityName}) async {
+    var weather = await WeatherModel().getCityWeather(cityName);
     updateUI(weather);
   }
 
@@ -69,7 +74,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   FlatButton(
                     onPressed: () {
-                      getWeatherData();
+                      getLocationWeatherData();
                     },
                     child: Icon(
                       Icons.near_me,
@@ -82,6 +87,10 @@ class _LocationScreenState extends State<LocationScreen> {
                           MaterialPageRoute(builder: (context) {
                         return CityScreen();
                       }));
+
+                      if (typedName != null) {
+                        getCityWeatherData(cityName: typedName);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
