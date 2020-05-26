@@ -20,17 +20,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
     longitude = location.longitude;
 
     String url =
-        'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$openWeatherApiKey';
+        'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$openWeatherApiKey&units=metric';
 
     NetworkHelper networkHelper = NetworkHelper(url: url);
     var weather = await networkHelper.getData();
 
-    var condition = weather['weather'][0]['id'];
-    var temperatureKelvin = weather['main']['temp'];
-    var cityName = weather['name'];
-
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen();
+      return LocationScreen(
+        weatherData: weather,
+      );
     }));
   }
 
